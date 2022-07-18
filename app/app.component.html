@@ -1,0 +1,44 @@
+<hello name="{{ name }}"></hello>
+<p>
+	Start editing to see some magic happen :)
+</p>
+
+<mat-toolbar color="primary">My empty table</mat-toolbar>
+
+<mat-table #table [dataSource]="dataSourceEmpty" matSort *ngIf="dataSourceEmpty.length > 0">
+	<ng-container matColumnDef="Name">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Name </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="Age">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Age </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+	</ng-container>
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="row.toggle(row)">
+	</mat-row>
+</mat-table>
+
+<div *ngIf="dataSourceEmpty.length === 0">No records found</div>
+
+<hr>
+
+<mat-toolbar color="primary">My full table</mat-toolbar>
+
+<mat-table #table [dataSource]="dataSource" matSort *ngIf="dataSource.length > 0">
+	<ng-container matColumnDef="Name">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Name </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="Age">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Age </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+	</ng-container>
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="row.toggle(row)">
+	</mat-row>
+</mat-table>
+
+<div *ngIf="dataSource.length === 0">No data</div>
